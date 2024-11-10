@@ -18,7 +18,7 @@ import {
 import React, { useState } from "react";
 import Image from "next/image";
 import { Button } from "@/components/ui/button";
-import { verifySecret, sendEmailOTP } from "@/lib/actions/user.actions";
+// import { verifySecret, sendEmailOTP } from "@/lib/actions/user.actions";
 import { useRouter } from "next/navigation";
 
 const OtpModal = ({
@@ -33,28 +33,28 @@ const OtpModal = ({
   const [password, setPassword] = useState("");
   const [isLoading, setIsLoading] = useState(false);
 
-  const handleSubmit = async (e: React.MouseEvent<HTMLButtonElement>) => {
-    e.preventDefault();
-    setIsLoading(true);
+  // const handleSubmit = async (e: React.MouseEvent<HTMLButtonElement>) => {
+  //   e.preventDefault();
+  //   setIsLoading(true);
 
-    console.log({ accountId, password });
+  //   console.log({ accountId, password });
 
-    try {
-      const sessionId = await verifySecret({ accountId, password });
+  //   try {
+  //     const sessionId = await verifySecret({ accountId, password });
 
-      console.log({ sessionId });
+  //     console.log({ sessionId });
 
-      if (sessionId) router.push("/");
-    } catch (error) {
-      console.log("Failed to verify OTP", error);
-    }
+  //     if (sessionId) router.push("/");
+  //   } catch (error) {
+  //     console.log("Failed to verify OTP", error);
+  //   }
 
-    setIsLoading(false);
-  };
+  //   setIsLoading(false);
+  // };
 
-  const handleResendOtp = async () => {
-    await sendEmailOTP({ email });
-  };
+  // const handleResendOtp = async () => {
+  //   await sendEmailOTP({ email });
+  // };
 
   return (
     <AlertDialog open={isOpen} onOpenChange={setIsOpen}>
@@ -91,7 +91,7 @@ const OtpModal = ({
         <AlertDialogFooter>
           <div className="flex w-full flex-col gap-4">
             <AlertDialogAction
-              onClick={handleSubmit}
+              // onClick={handleSubmit}
               className="shad-submit-btn h-12"
               type="button"
             >
@@ -113,7 +113,7 @@ const OtpModal = ({
                 type="button"
                 variant="link"
                 className="pl-1 text-brand"
-                onClick={handleResendOtp}
+                // onClick={handleResendOtp}
               >
                 Click to resend
               </Button>
